@@ -3,7 +3,7 @@ D#! /bin/bash
 rm -rf public.min
 mkdir public.min
 
-cp public/index.html public.min/index
+cp public/index.html public.min/index.html
 
 cp public/about/index.html public.min/about.html
 

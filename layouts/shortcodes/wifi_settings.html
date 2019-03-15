@@ -1,6 +1,6 @@
 <script type = "application/javascript">
   function getWifiData() {
-    getData('/api/settings/wifi', function(data){
+    getData('/api/wifi', function(data){
       $("#active").prop('checked', data["active"]);
       $("#ssid").val(data["ssid"]);
     });
@@ -13,7 +13,7 @@
   </div>
   <div class="panel-body">
     <div class="form-group">
-      <form id="form" action="/api/settings/wifi" method="POST" role="form">
+      <form id="form" action="/api/wifi" method="POST" role="form">
         <div class="col">
           <div class="material-switch">
             WIFI Active:

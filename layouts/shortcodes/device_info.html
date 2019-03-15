@@ -1,0 +1,74 @@
+<script type = "application/javascript">
+  function getWifiData() {
+    getData('/api/wifi', function(data) {
+      var html = data["ssid"];
+      if (data["connected"]) {
+        html += "(connected)";
+      }
+      else if (data["active"]) {
+        html += "(active)";
+      }
+      else {
+         html += "(deactive)";
+      }
+      $("#wifi").html(html);
+    });
+  }
+  function getApData() {
+    getData('/api/ap', function(data){
+      if (data["active"]) {
+        $("#ap").html(data["ssid"] + "(active)");
+      }
+      else {
+        $("#ap").html(data["ssid"] + "(deactive)");
+      }
+    });
+  }
+  function getMqttData() {
+    getData('/api/mqtt', function(data){
+      var html = data["username"] + "@" + data["hostname"] + ":" + data["port"];
+      if (data["connected"]) {
+        html += "(connected";
+      }
+      else if (data["active"]) {
+        html += "(active";
+      }
+      else {
+        html += "(deactive"
+      }
+      if (data["secure"]){
+        html += ",secure";
+      }
+      html += ")";
+      $("#mqtt").html(html);
+    });
+  }
+  function getDeviceData() {
+    getData('/api/device', function(data){
+      $("#device_name").html(data["name"]);
+      $("#device_time").html(data["time"]);
+      setInterval(function () {
+        var d = new Date($("#device_time").html());
+        d.setSeconds(d.getSeconds() + 1);
+        $("#device_time").html(d.getFullYear() +  "-"  + (d.getMonth()+1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+      }, 1000);
+    });
+  }
+  $(document).ready(function() {
+    getWifiData();
+    getApData();
+    getMqttData();
+    getDeviceData();
+  });
+</script>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <div class="container row"><strong class="col-4">Device Name: </strong><div id="device_name" class="col-8"></div></div>
+    <div class="container row"><strong class="col-4">Device Time: </strong><div id="device_time" class="col-8"></div></div>
+    <div class="container row"><strong class="col-4">WIFI: </strong><div id="wifi" class="col-8"></div></div>
+    <div class="container row"><strong class="col-4">Access Point: </strong><div id="ap" class="col-8"></div></div>
+    <div class="container row"><strong class="col-4">MQTT: </strong><div id="mqtt" class="col-8"></div></div>
+  </div>
+</div>

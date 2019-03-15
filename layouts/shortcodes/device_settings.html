@@ -1,0 +1,46 @@
+<script type = "application/javascript">
+  function getWifiData() {
+    getData('/api/device', function(data){
+      var date = new Date(data["time"]);
+      var currentDate = date.toISOString().slice(0,10);
+      var currentTime = date.getHours() + ':' + date.getMinutes();
+      $("#date").val(currentDate);
+      $("#time").val(currentTime);
+      $("#name").val(data["name"]);
+    });
+  }
+  $(document).ready(getWifiData);
+  setSubmitClick(getWifiData);
+</script>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <form id="form" action="/api/device" method="POST" role="form">
+      <div class="form-group">
+        <div class="col-8">
+          <label for="name">Device Name: </label>
+          <input type="text" name="name" id="name" required class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="container row">
+          <div class="col-3">
+            <label for="date">Date: </label>
+            <input type="date" name="date" id="date" required class="form-control">
+          </div>
+          <div class="col-3">
+            <label for="time">Time: </label>
+            <input type="time" name="time" id="time" required class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-8">
+          <br>
+          <button type="submit" id="submit" disabled=true class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <script>
   function getWifiData() {
-    getData('/api/settings/mqtt', function(data){
+    getData('/api/mqtt', function(data){
       $("#active").prop('checked', data["active"]);
       $("#secure").prop('checked', data["secure"]);
       $("#hostname").val(data["hostname"]);
@@ -16,7 +16,7 @@
   </div>
   <div class="panel-body">
     <div class="form-group">
-      <form id="form" action="/api/settings/mqtt" method="POST">
+      <form id="form" action="/api/mqtt" method="POST">
         <div class="col">
           <div class="material-switch">
             MQTT Active:

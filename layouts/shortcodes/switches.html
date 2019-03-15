@@ -1,0 +1,70 @@
+<script type = "application/javascript">
+  function getSwitchesData() {
+    getData('/api/switches', function(data) {
+      for (i = 0; i < data["status"].length; i++) {
+        $("#switch" + (i + 1)).prop('checked', data["status"][i]);
+      }
+    });
+  }
+  function switchChange(index)
+  {
+    console.log(index);
+    var object = {};
+    object["switch"]={};
+    object["switch"]["index"] = index - 1;
+    object["switch"]["status"] = $("#switch" + index).prop('checked');
+    $.ajax({
+      url: '/api/switches',
+      type : 'POST',
+      dataType : 'json',
+      contentType: 'application/json',
+      data : JSON.stringify(object),
+      complete: function () {
+        getSwitchesData();
+      }
+    });
+  }
+
+  $(document).ready(function () {
+    getSwitchesData();
+    setInterval(getSwitchesData, 5000);
+  });
+</script>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <div class="container row">
+      <div class="col">
+        <div class="material-switch">
+          Switch 1:
+          <input name="switch1" id="switch1" type="checkbox" onchange="switchChange(1);"/>
+          <label for="switch1" class="label-success"></label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="material-switch">
+          Switch 3:
+          <input name="switch3" id="switch3" type="checkbox"  onchange="switchChange(3);"/>
+          <label for="switch3" class="label-success"></label>
+        </div>
+      </div>
+    </div>
+    <div class="container row">
+      <div class="col">
+        <div class="material-switch">
+          Switch 2:
+          <input name="switch2" id="switch2" type="checkbox"  onchange="switchChange(2);"/>
+          <label for="switch2" class="label-success"></label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="material-switch">
+          Switch 4:
+          <input name="switch4" id="switch4" type="checkbox"  onchange="switchChange(4);"/>
+          <label for="switch4" class="label-success"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

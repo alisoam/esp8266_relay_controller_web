@@ -11,11 +11,16 @@ function getData(address, onSuccess) {
 
 function sendFormData(onComplete) {
   $("#submit").prop("disabled",true);
+  var object = {};
+  $.map($("#form").serializeArray(), function(n, i){
+    object[n['name']] = n['value'];
+  });
   $.ajax({
     url: $("#form").prop('action'),
     type : $("#form").prop('method'),
     dataType : 'json',
-    data : $("#form").serialize(),
+    contentType: 'application/json',
+    data : JSON.stringify(object),
     complete: function () {
       onComplete();
     }

@@ -1,5 +1,7 @@
 ---
 title: Home
 ---
-
-Home page Contetnt Go to Here
+## Device Info
+{{< device_info >}}
+## Switches
+{{< switches >}}
