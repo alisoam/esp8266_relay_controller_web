@@ -1,4 +1,4 @@
-baseURL = "gogole.com"
+baseURL = ""
 languageCode = "fa-ir"
 title = "ESP Relay"
 theme = "vanilla-bootstrap-hugo-theme"
@@ -38,5 +38,5 @@ theme = "vanilla-bootstrap-hugo-theme"
   containerMaxWidth = "700px"
   dateFormat = "Jan 2, 2006"
   homeText = ""
-  footerText = "Made with [Hugo](https://gohugo.io/) & [Vanilla](https://github.com/zwbetz-gh/vanilla-bootstrap-hugo-theme)"
+  footerText = ""
   hideFooter = false

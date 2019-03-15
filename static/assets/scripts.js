@@ -28,7 +28,7 @@ function setSubmitClick(onComplete){
       event.preventDefault();
       sendFormData(onComplete);
     });
-    $('input').on('change', function() {
+    $('input').bind('input', function() {
       $("#submit").prop('disabled', false);
     });
   });
