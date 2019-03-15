@@ -1,0 +1,39 @@
+<script type = "application/javascript">
+  function getWifiData() {
+    getData('/api/settings/wifi', function(data){
+      $("#active").prop('checked', data["active"]);
+      $("#ssid").val(data["ssid"]);
+    });
+  }
+  $(document).ready(getWifiData);
+  setSubmitClick(getWifiData);
+</script>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <form id="form" action="/api/settings/wifi" method="POST" role="form">
+        <div class="col">
+          <div class="material-switch">
+            WIFI Active:
+            <input name="active" id="active" type="checkbox" />
+            <label for="active" class="label-success"></label>
+          </div>
+        </div>
+        <div class="col-8">
+          <label for="ssid">SSID: </label>
+          <input type="text" name="ssid" id="ssid" required=true class="form-control">
+        </div>
+        <div class="col-8">
+          <label for="password">Password: </label>
+          <input type="text" name="password" id="password" placeholder="Enter New Password" class="form-control">
+        </div>
+        <div class="col-8">
+          <br>
+          <button type="submit" id="submit" disabled=true class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

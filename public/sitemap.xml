@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>gogole.com/settings/</loc>
+  </url>
+  
+  <url>
+    <loc>gogole.com/settings/wifi_settings/</loc>
+  </url>
+  
+  <url>
+    <loc>gogole.com/settings/ap_settings/</loc>
+  </url>
+  
+  <url>
+    <loc>gogole.com/settings/mqtt_settings/</loc>
+  </url>
+  
+  <url>
+    <loc>gogole.com/about/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>gogole.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>gogole.com/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>gogole.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

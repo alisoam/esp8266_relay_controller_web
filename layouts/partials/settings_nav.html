@@ -1,0 +1,17 @@
+<div class="sidenav">
+  <ul>
+    {{ $currentPage := . }}
+    {{ range ((where .Site.RegularPages "Section" "settings") sort  ".Weight")}}
+      {{ if eq $.RelPermalink .URL }}
+        <li class="active" style="color:red;">
+          <span style="color:green;">{{ .Name }}</span>
+      {{ else }}
+        <li>
+          <a href="{{ .URL }}">
+            <span>{{ .Name }}</span>
+          </a>
+      {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</div>

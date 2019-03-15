@@ -1,0 +1,55 @@
+<script>
+  function getWifiData() {
+    getData('/api/settings/mqtt', function(data){
+      $("#active").prop('checked', data["active"]);
+      $("#secure").prop('checked', data["secure"]);
+      $("#hostname").val(data["hostname"]);
+      $("#port").val(data["port"]);
+      $("#username").val(data["username"]);
+    });
+  }
+  $(document).ready(getWifiData);
+  setSubmitClick(getWifiData);
+</script>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <form id="form" action="/api/settings/mqtt" method="POST">
+        <div class="col">
+          <div class="material-switch">
+            MQTT Active:
+            <input id="active"  name="active" type="checkbox" />
+            <label for="active" class="label-success"></label>
+          </div>
+          <div class="material-switch">
+            Secure Connection:
+            <input id="secure"  name="secure" type="checkbox" />
+            <label for="secure" class="label-success"></label>
+          </div>
+        </div>
+        <div class="col-8">
+          <label for="hostname">Hostname: </label>
+          <input type="text" id="hostname"  name="hostname" required=true class="form-control">
+        </div>
+        <div class="col-8">
+          <label for="port">Port: </label>
+          <input type="number" min=0 max=65535 required=true  name="port" id="port" class="form-control">
+        </div>
+        <div class="col-8">
+          <label for="username">Username: </label>
+          <input type="text" id="username"  name="username" required=true class="form-control">
+        </div>
+        <div class="col-8">
+          <label for="password">Password: </label>
+          <input type="text" id="password" name="password" placeholder="Enter New Password" class="form-control">
+        </div>
+        <div class="col-8">
+          <br>
+          <button type="submit" id="submit" disabled=true class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

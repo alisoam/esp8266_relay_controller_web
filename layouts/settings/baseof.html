@@ -1,0 +1,24 @@
+<!doctype html>
+{{ $lang := .Site.Language.Lang | default "en" }}
+<html lang="{{ $lang }}" class="h-100">
+  {{ partial "head.html" . }}
+  <body class="d-flex flex-column h-100">
+    {{ partial "nav.html" . }}
+    <div class="container">
+      <main id="main">
+        <div class="row py-2">
+          <div class="col-3" id="sticky-sidebar">
+            <div class="sticky-top">
+              {{ partial "settings_nav.html" . }}
+            </div>
+          </div>
+          <div class="col">
+            {{ block "main" . }}{{ end }}
+          </div>
+        </div>
+      </main>
+    </div>
+    {{ partial "footer.html" . }}
+    {{ partial "google-analytics-async.html" . }}
+  </body>
+</html>

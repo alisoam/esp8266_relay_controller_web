@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Settings on ESP Relay</title>
+    <link>gogole.com/settings/</link>
+    <description>Recent content in Settings on ESP Relay</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fa-ir</language>
+    
+	<atom:link href="gogole.com/settings/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WIFI Settings</title>
+      <link>gogole.com/settings/wifi_settings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>gogole.com/settings/wifi_settings/</guid>
+      <description>function getWifiData() { $.ajax({ type: &#39;GET&#39;, url: &#39;/info/wifi&#39;, data: { get_param: &#39;value&#39; }, dataType: &#39;json&#39;, success: function (data) { $(&#34;#wifi_avtive&#34;).prop(&#39;checked&#39;, true); $(&#34;wifi_ssid&#34;).value = data[&#34;ssid&#34;]; } }); } $(document).ready(function(){ getWifiData(); }); $(document).ready(function(){ $(&#34;#submit&#34;).on(&#39;click&#39;, function(){ $.ajax({ url: &#39;test.php&#39;, type : &#34;POST&#34;, dataType : &#39;json&#39;, data : $(&#34;#form&#34;).serialize(), complete: function () { getWifiData(); } }) }); });   WIFI Active:    SSID:   Password:   Submit      </description>
+    </item>
+    
+    <item>
+      <title>Access Point Settings</title>
+      <link>gogole.com/settings/ap_settings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>gogole.com/settings/ap_settings/</guid>
+      <description> Acess Point Active:    SSID:   Password:       </description>
+    </item>
+    
+    <item>
+      <title>MQTT Settings</title>
+      <link>gogole.com/settings/mqtt_settings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>gogole.com/settings/mqtt_settings/</guid>
+      <description> MQTT Active:   Secure Connection:    Hostname:   Port:   Username:   Password:       </description>
+    </item>
+    
+  </channel>
+</rss>
