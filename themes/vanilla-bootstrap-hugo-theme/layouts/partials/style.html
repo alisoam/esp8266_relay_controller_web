@@ -1,6 +1,6 @@
 
 {{ if eq .Site.Params.includeBootstrapJs true }}
-<link rel="stylesheet" href="{{ "/assets/bootstrap.min.css" | relURL }}">
+<link rel="stylesheet" href="{{ "/assets/bootstrap.min.css" | absURL }}">
 {{ end }}
-<link rel="stylesheet" href="{{ "/assets/style.css" | relURL }}">
-<link rel="stylesheet" href="{{ "/assets/styles.css" | relURL }}">
+<link rel="stylesheet" href="{{ "/assets/style.css" | absURL }}">
+<link rel="stylesheet" href="{{ "/assets/styles.css" | absURL }}">

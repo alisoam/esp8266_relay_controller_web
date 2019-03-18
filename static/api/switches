@@ -1,3 +1,4 @@
 {
-  "status": [true, false, false, true]
+  "states": [true, false, false, true],
+  "error": true
 }

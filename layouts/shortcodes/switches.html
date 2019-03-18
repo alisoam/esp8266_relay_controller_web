@@ -1,8 +1,14 @@
 <script type = "application/javascript">
   function getSwitchesData() {
     getData('/api/switches', function(data) {
-      for (i = 0; i < data["status"].length; i++) {
-        $("#switch" + (i + 1)).prop('checked', data["status"][i]);
+      if (data["error"]){
+        $("#error").css("background-color","#ff4444");
+      }
+      else{
+        $("#error").css("background-color","#00C851");
+      }
+      for (i = 0; i < data["states"].length; i++) {
+        $("#switch" + (i + 1)).prop('checked', data["states"][i]);
       }
     });
   }
@@ -12,7 +18,7 @@
     var object = {};
     object["switch"]={};
     object["switch"]["index"] = index - 1;
-    object["switch"]["status"] = $("#switch" + index).prop('checked');
+    object["switch"]["state"] = $("#switch" + index).prop('checked');
     $.ajax({
       url: '/api/switches',
       type : 'POST',
@@ -34,6 +40,14 @@
   <div class="panel-heading">
   </div>
   <div class="panel-body">
+    <div class="container ">
+      <div class="row container ">
+      Switch Error:  &nbsp;
+      <div class="material-led pull-right">
+        <label id="error233" style="background-color:#00C851;"></label>
+      </div>
+      </div>
+    </div>
     <div class="container row">
       <div class="col">
         <div class="material-switch">

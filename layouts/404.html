@@ -1,0 +1,33 @@
+<!doctype html>
+{{ $lang := .Site.Language.Lang | default "en" }}
+<html lang="{{ $lang }}" class="h-100">
+  {{ partial "head.html" . }}
+  <title>404</title>
+  <style>
+    body {
+    background: #dedede;
+    }
+    .page-wrap {
+        min-height: 100vh;
+    }
+  </style>
+  <body class="d-flex flex-column h-100">
+    <div class="container">
+      <main id="main">
+        <div class="page-wrap d-flex flex-row align-items-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-12 text-center">
+                <span class="display-1 d-block">404</span>
+                <div class="mb-4 lead">The page you are looking for was not found.</div>
+                <a href="/" class="btn btn-link">Back to Home</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    {{ partial "footer.html" . }}
+    {{ partial "google-analytics-async.html" . }}
+  </body>
+</html>

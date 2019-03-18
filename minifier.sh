@@ -1,10 +1,10 @@
-D#! /bin/bash
+#! /bin/bash
 
 rm -rf public.min
 mkdir public.min
 
 cp public/index.html public.min/index.html
-
+cp public/404.html public.min/404.html
 cp public/about/index.html public.min/about.html
 
 cp public/settings/index.html public.min/settings.html

@@ -54,6 +54,7 @@
 }
 
 .material-led > label {
+  top: 4px;
   height: 20px;
   position: relative;
   width: 20px;
