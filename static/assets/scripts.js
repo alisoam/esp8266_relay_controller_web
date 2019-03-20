@@ -21,7 +21,24 @@ function sendFormData(onComplete) {
     dataType : 'json',
     contentType: 'application/json',
     data : JSON.stringify(object),
+    success: function (data) {
+      $("#message").removeClass('alert-danger');
+      $("#message").addClass('alert-success');
+      $("#message").html('<strong>Success!</strong>');
+
+    },
+    error: function (data) {
+      $("#message").removeClass('alert-success');
+      $("#message").addClass('alert-danger');
+      if (data.hasOwnProperty["message"]) {
+        $("#message").html('<strong>Failed!</strong>' + data["message"]);
+      }
+      else {
+        $("#message").html('<strong>Failed!</strong>');
+      }
+    },
     complete: function () {
+      $("#message").css('display', '');
       onComplete();
     }
   });

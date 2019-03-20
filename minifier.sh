@@ -8,6 +8,7 @@ cp public/404.html public.min/404.html
 cp public/about/index.html public.min/about.html
 
 cp public/settings/index.html public.min/settings.html
+cp public/settings/device/index.html public.min/device.html
 cp public/settings/wifi/index.html public.min/wifi.html
 cp public/settings/ap/index.html public.min/ap.html
 cp public/settings/mqtt/index.html public.min/mqtt.html

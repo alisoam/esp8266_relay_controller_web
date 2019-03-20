@@ -1,15 +1,17 @@
 <script type = "application/javascript">
-  function getWifiData() {
+  function getApData() {
     getData('/api/ap', function(data){
       $("#active").prop('checked', data["active"]);
       $("#ssid").val(data["ssid"]);
     });
+    $("#password").val('');
   }
-  $(document).ready(getWifiData);
-  setSubmitClick(getWifiData);
+  $(document).ready(getApData);
+  setSubmitClick(getApData);
 </script>
 <div class="panel panel-default">
   <div class="panel-heading">
+    <div id="message" class="alert" style="display: none;"></div>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -17,17 +19,18 @@
         <div class="col">
           <div class="material-switch">
             Access Point Active:
-            <input name="active" id="active" type="checkbox" />
+            <input name="active" hidden=true value=false />
+            <input name="active" id="active" type="checkbox" value=false />
             <label for="active" class="label-success"></label>
           </div>
         </div>
         <div class="col-8">
           <label for="ssid">SSID: </label>
-          <input type="text" name="ssid" id="ssid" required=true class="form-control">
+          <input type="text" name="ssid" id="ssid" required=true minlength="1" maxlength="30" class="form-control">
         </div>
         <div class="col-8">
           <label for="password">Password: </label>
-          <input type="text" name="password" id="password" placeholder="Enter New Password" class="form-control">
+          <input type="text" name="password" id="password" placeholder="Enter New Password" minlength="8" maxlength="30" class="form-control">
         </div>
         <div class="col-8">
           <br>

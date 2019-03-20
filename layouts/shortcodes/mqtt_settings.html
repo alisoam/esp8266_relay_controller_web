@@ -1,5 +1,5 @@
 <script>
-  function getWifiData() {
+  function getMqttData() {
     getData('/api/mqtt', function(data){
       $("#active").prop('checked', data["active"]);
       $("#secure").prop('checked', data["secure"]);
@@ -7,12 +7,14 @@
       $("#port").val(data["port"]);
       $("#username").val(data["username"]);
     });
+    $("#password").val('');
   }
-  $(document).ready(getWifiData);
-  setSubmitClick(getWifiData);
+  $(document).ready(getMqttData);
+  setSubmitClick(getMqttData);
 </script>
 <div class="panel panel-default">
   <div class="panel-heading">
+    <div id="message" class="alert" style="display: none;"></div>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -20,18 +22,20 @@
         <div class="col">
           <div class="material-switch">
             MQTT Active:
-            <input id="active"  name="active" type="checkbox" />
+            <input name="active" hidden=true value=false />
+            <input id="active"  name="active" type="checkbox" value=true />
             <label for="active" class="label-success"></label>
           </div>
           <div class="material-switch">
             Secure Connection:
-            <input id="secure"  name="secure" type="checkbox" />
+            <input name="secure" hidden=true value=false />
+            <input id="secure"  name="secure" type="checkbox" value=true />
             <label for="secure" class="label-success"></label>
           </div>
         </div>
         <div class="col-8">
           <label for="hostname">Hostname: </label>
-          <input type="text" id="hostname"  name="hostname" required=true class="form-control">
+          <input type="text" id="hostname"  name="hostname" required=true minlength="3" maxlength="30" class="form-control">
         </div>
         <div class="col-8">
           <label for="port">Port: </label>
@@ -39,11 +43,11 @@
         </div>
         <div class="col-8">
           <label for="username">Username: </label>
-          <input type="text" id="username"  name="username" required=true class="form-control">
+          <input type="text" id="username"  name="username" required=true maxlength="30" class="form-control">
         </div>
         <div class="col-8">
           <label for="password">Password: </label>
-          <input type="text" id="password" name="password" placeholder="Enter New Password" class="form-control">
+          <input type="text" id="password" name="password" placeholder="Enter New Password" maxlength="30" class="form-control">
         </div>
         <div class="col-8">
           <br>
