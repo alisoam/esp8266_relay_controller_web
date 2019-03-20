@@ -16,9 +16,8 @@
   {
     console.log(index);
     var object = {};
-    object["switch"]={};
-    object["switch"]["index"] = index - 1;
-    object["switch"]["state"] = $("#switch" + index).prop('checked');
+    object["index"] = index - 1;
+    object["state"] = $("#switch" + index).prop('checked');
     $.ajax({
       url: '/api/switches',
       type : 'POST',
@@ -44,7 +43,7 @@
       <div class="row container ">
       Switch Error:  &nbsp;
       <div class="material-led pull-right">
-        <label id="error233" style="background-color:#00C851;"></label>
+        <label id="error" style="background-color:#00C851;"></label>
       </div>
       </div>
     </div>
