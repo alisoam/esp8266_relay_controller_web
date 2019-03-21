@@ -3,7 +3,13 @@
     getData('/api/device', function(data){
       var date = new Date(data["time"]);
       var currentDate = date.toISOString().slice(0,10);
-      var currentTime = date.getHours() + ':' + date.getMinutes();
+      var currentTime = "";
+      if (date.getHours() < 10 )
+        currentTime += "0";
+      currentTime += date.getHours() + ':';
+      if (date.getMinutes() < 10 )
+        currentTime += "0";
+      currentTime += date.getMinutes();
       $("#date").val(currentDate);
       $("#time").val(currentTime);
       $("#name").val(data["name"]);

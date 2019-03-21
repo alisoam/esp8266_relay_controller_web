@@ -10,7 +10,6 @@ function getData(address, onSuccess) {
 }
 
 function sendFormData(onComplete, form = "#form") {
-  $("#submit").prop("disabled",true);
   var object = {};
   $.map($(form).serializeArray(), function(n, i){
     object[n['name']] = n['value'];
@@ -46,6 +45,7 @@ function setSubmitClick(onComplete, form = "#form", submit = "#submit") {
   $(document).ready(function(){
     $(form).submit(function(event){
       event.preventDefault();
+      $(submit).prop("disabled",true);
       sendFormData(onComplete, form);
     });
     $(form + ' input').bind('input', function() {

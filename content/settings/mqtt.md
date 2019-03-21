@@ -1,5 +1,5 @@
 ---
 title: MQTT Settings
-weight: 3
+weight: 2
 ---
 {{< mqtt_settings >}}
