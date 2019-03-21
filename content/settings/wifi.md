@@ -1,6 +1,6 @@
 ---
 title: WIFI Settings  
-weight: 2
+weight: 1
 layout: wifi
 ---
 {{< wifi_settings >}}

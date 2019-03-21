@@ -3,13 +3,13 @@
     getData('/api/wifi', function(data) {
       var html = data["ssid"];
       if (data["connected"]) {
-        html += "(connected)";
+        html += "(Connected)";
       }
       else if (data["active"]) {
-        html += "(active)";
+        html += "(Active)";
       }
       else {
-         html += "(deactive)";
+         html += "(Deactive)";
       }
       $("#wifi").html(html);
     });
@@ -17,10 +17,10 @@
   function getApData() {
     getData('/api/ap', function(data){
       if (data["active"]) {
-        $("#ap").html(data["ssid"] + "(active)");
+        $("#ap").html(data["ssid"] + "(Active)");
       }
       else {
-        $("#ap").html(data["ssid"] + "(deactive)");
+        $("#ap").html(data["ssid"] + "(Deactive)");
       }
     });
   }
@@ -28,16 +28,20 @@
     getData('/api/mqtt', function(data){
       var html = data["username"] + "@" + data["hostname"] + ":" + data["port"];
       if (data["connected"]) {
-        html += "(connected";
+        html += "(Connected";
       }
       else if (data["active"]) {
-        html += "(active";
+        html += "(Active";
       }
       else {
-        html += "(deactive"
+        html += "(Deactive"
       }
       if (data["secure"]){
-        html += ",secure";
+        html += ", Secure";
+      }
+      else
+      {
+        html += ", Not Secure";
       }
       html += ")";
       $("#mqtt").html(html);
@@ -47,18 +51,24 @@
     getData('/api/device', function(data){
       $("#device_name").html(data["name"]);
       $("#device_time").html(data["time"]);
-      setInterval(function () {
-        var d = new Date($("#device_time").html());
-        d.setSeconds(d.getSeconds() + 1);
-        $("#device_time").html(d.getFullYear() +  "-"  + (d.getMonth()+1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
-      }, 1000);
     });
   }
-  $(document).ready(function() {
+  function getDeviceInfo() {
     getWifiData();
     getApData();
     getMqttData();
     getDeviceData();
+  }
+  $(document).ready(function() {
+    getDeviceInfo();
+    setInterval(getDeviceInfo , 5000);
+    setInterval(function () {
+      if ($("#device_time").html()) {
+        var d = new Date($("#device_time").html());
+        d.setSeconds(d.getSeconds() + 1);
+        $("#device_time").html(d.getFullYear() +  "-"  + (d.getMonth()+1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+      }
+    }, 1000);
   });
 </script>
 <div class="panel panel-default">

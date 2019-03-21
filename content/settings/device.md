@@ -1,5 +1,5 @@
 ---
 title: Device Settings
-weight: 1
+weight: 2
 ---
 {{< device_settings >}}

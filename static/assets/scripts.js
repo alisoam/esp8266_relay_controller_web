@@ -9,49 +9,47 @@ function getData(address, onSuccess) {
   });
 }
 
-function sendFormData(onComplete) {
+function sendFormData(onComplete, form = "#form") {
   $("#submit").prop("disabled",true);
   var object = {};
-  $.map($("#form").serializeArray(), function(n, i){
+  $.map($(form).serializeArray(), function(n, i){
     object[n['name']] = n['value'];
   });
   $.ajax({
-    url: $("#form").prop('action'),
-    type : $("#form").prop('method'),
+    url: $(form).prop('action'),
+    type : $(form).prop('method'),
     dataType : 'json',
-    contentType: 'application/json',
     data : JSON.stringify(object),
     success: function (data) {
       $("#message").removeClass('alert-danger');
       $("#message").addClass('alert-success');
       $("#message").html('<strong>Success!</strong>');
-
     },
     error: function (data) {
       $("#message").removeClass('alert-success');
       $("#message").addClass('alert-danger');
-      if (data.hasOwnProperty["message"]) {
-        $("#message").html('<strong>Failed!</strong>' + data["message"]);
-      }
-      else {
-        $("#message").html('<strong>Failed!</strong>');
-      }
+      $("#message").html('<strong>Failed!</strong> ');
+
     },
-    complete: function () {
+    complete: function (data) {
+      var jsonResponse = data.responseJSON;
       $("#message").css('display', '');
+      if (jsonResponse.message) {
+        $("#message").html($("#message").html() + '&nbsp;' + jsonResponse.message);
+      }
       onComplete();
     }
   });
 }
 
-function setSubmitClick(onComplete){
+function setSubmitClick(onComplete, form = "#form", submit = "#submit") {
   $(document).ready(function(){
-    $("#form").submit(function(event){
+    $(form).submit(function(event){
       event.preventDefault();
-      sendFormData(onComplete);
+      sendFormData(onComplete, form);
     });
-    $('input').bind('input', function() {
-      $("#submit").prop('disabled', false);
+    $(form + ' input').bind('input', function() {
+      $(submit).prop('disabled', false);
     });
   });
 }
